@@ -31,3 +31,8 @@ body{
 .hidden{
     display: none;
 }
+
+
+.student{
+    border: 1px solid blue;
+}
