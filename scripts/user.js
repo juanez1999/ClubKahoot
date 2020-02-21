@@ -3,7 +3,10 @@
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+var db = firebase.firestore();
 
+//var rooms = db.collection('rooms');
+//rooms.doc('4848').set({name: 'test'});
 
 
 var roomNumberCont = document.querySelector('.roomNumberCont');
@@ -16,8 +19,19 @@ function handleRoomNumberPanelSubmit (event) {
     var roomNumberInput = roomNumberCont.querySelector('input');
     var roomNumber = roomNumberInput.value;
     
-    roomNumberCont.classList.add('hidden');
-    userNameCont.classList.remove('hidden');
+    
+    var room = db.collection('rooms').doc(roomNumber);
+    
+    room.get().then(function(doc) {
+        if(doc.exists){
+            //mostramos el panel actual
+            roomNumberCont.classList.add('hidden');
+            //mostramos el panel siguiente
+            userNameCont.classList.remove('hidden');
+        }
+    });
+    
+    
     console.log('test', roomNumber);
 }
 roomNumberPanel.addEventListener('submit', handleRoomNumberPanelSubmit);
