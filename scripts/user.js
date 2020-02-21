@@ -5,6 +5,8 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 
+var room = null;
+
 //var rooms = db.collection('rooms');
 //rooms.doc('4848').set({name: 'test'});
 
@@ -20,7 +22,7 @@ function handleRoomNumberPanelSubmit (event) {
     var roomNumber = roomNumberInput.value;
     
     
-    var room = db.collection('rooms').doc(roomNumber);
+    room = db.collection('rooms').doc(roomNumber);
     
     room.get().then(function(doc) {
         if(doc.exists){
@@ -41,3 +43,26 @@ function handleRoomNumberPanelSubmit (event) {
     console.log('test', roomNumber);
 }
 roomNumberPanel.addEventListener('submit', handleRoomNumberPanelSubmit);
+
+var userNamePanel = userNameCont.querySelector('.panel');
+
+function handleUserNamePanelSubmit () {
+    event.preventDefault();
+    var userName = userNamePanel.querySelector('input').value;
+
+    room.collection('students').add({
+        name: userName,
+    });
+
+    userNameCont.classList.add('hidden');
+    messageCont.classList.remove('hidden');
+    
+    listenForStudents();
+    
+}
+
+userNamePanel.addEventListener('submit',handleUserNamePanelSubmit);
+
+function listenForStudents(){
+
+}
