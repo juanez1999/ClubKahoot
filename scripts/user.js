@@ -28,6 +28,12 @@ function handleRoomNumberPanelSubmit (event) {
             roomNumberCont.classList.add('hidden');
             //mostramos el panel siguiente
             userNameCont.classList.remove('hidden');
+            console.log("Document data:", doc.data());
+            //mostramos nombre del aula en el siguiente panel
+            userNameCont.querySelector('.roomName').innerText = doc.data().name;            
+        } else{
+            //mostrar error si no existe
+            roomNumberCont.querySelector('.error').classList.remove('hidden');
         }
     });
     

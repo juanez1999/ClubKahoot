@@ -20,6 +20,10 @@ body{
     text-align: center;
 }
 
+.error{
+    color: red;
+}
+
 .panel h1{
     margin-top: 0px;
 }

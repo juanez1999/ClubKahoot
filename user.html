@@ -14,10 +14,14 @@
         <form class="panel">
             <h1>Ingresa tu número de aula</h1>
 
+            
+
             <label>
                 Aula
                 <input type="number">
             </label>
+
+            <p class="error hidden">Esa aula no existe</p>
 
             <button type="submit">Continuar</button>
         </form>
@@ -26,7 +30,9 @@
     <div class="userNameCont container hidden">
         <form class="panel">
             <h1>Ingresa tu nombre</h1>
-
+            
+            <p>Vas a ingresar al aula <Strong class="roomName"></Strong></p>
+            
             <label>
                 Nombre
                 <input type="text">
